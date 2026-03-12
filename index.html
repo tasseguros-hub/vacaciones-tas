@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ANEXO I – Formato de Pendientes (Pre-Vacaciones)</title>
+<title>ANEXO I – Formato de Pendientes de Vacaciones (Pre-Vacaciones)</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #1a1a2e;
     --muted: #6b7280;
     --line: #d1d5db;
-    --accent: #2d6a4f;
-    --accent-light: #e8f5e9;
+    --accent: #004716;
+    --accent-light: #e6f0e8;
     --warn: #b45309;
     --bg: #fafaf8;
     --card: #ffffff;
@@ -326,6 +326,9 @@
     font-size: 14px;
     color: var(--ink);
     user-select: none;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
   }
 
   /* Signatures */
@@ -424,18 +427,15 @@
   <div class="header">
     <div>
       <div class="logo-area" style="margin-bottom:6px">
-        <div class="logo-circle">TAS</div>
-        <div>
-          <div class="logo-text">TAS</div>
-          <div class="logo-sub">Corredores de Seguros</div>
-        </div>
+        <div class="logo-circle" style="background:#004716;">TAS</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;color:#004716;letter-spacing:0.05em;text-transform:uppercase;">Corredores de Seguros</div>
       </div>
     </div>
     <div class="form-badge">ANEXO I</div>
   </div>
 
-  <h1>Formato de Pendientes</h1>
-  <p class="subtitle">Pre-Vacaciones — Complete todos los campos antes de su período de ausencia</p>
+  <h1>Formato de Pendientes de Vacaciones</h1>
+  <p class="subtitle">Complete todos los campos antes de su período de ausencia</p>
 
   <!-- Datos del trabajador -->
   <div class="card">
@@ -465,11 +465,11 @@
     <div class="field-row">
       <div class="field">
         <label>Período de vacaciones</label>
-        <div class="vacation-dates">
-          <label>Desde</label>
-          <input type="date">
-          <label>Hasta</label>
-          <input type="date">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap;">Desde</span>
+          <input type="date" style="flex:1;min-width:120px;font-size:12px;padding:7px 10px;">
+          <span style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap;">Hasta</span>
+          <input type="date" style="flex:1;min-width:120px;font-size:12px;padding:7px 10px;">
         </div>
       </div>
       <div class="field">
@@ -512,7 +512,10 @@
             </select>
           </td>
           <td><input type="text" placeholder="Responsable, notas..."></td>
-          <td></td>
+          <td style="text-align:center;vertical-align:middle;">
+            <button type="button" onclick="removeTarea(this)" title="Eliminar"
+              style="width:28px;height:28px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:16px;cursor:pointer;line-height:1;">×</button>
+          </td>
         </tr>
         <tr>
           <td class="task-num">2</td>
@@ -527,7 +530,10 @@
             </select>
           </td>
           <td><input type="text" placeholder="Responsable, notas..."></td>
-          <td></td>
+          <td style="text-align:center;vertical-align:middle;">
+            <button type="button" onclick="removeTarea(this)" title="Eliminar"
+              style="width:28px;height:28px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:16px;cursor:pointer;line-height:1;">×</button>
+          </td>
         </tr>
         <tr>
           <td class="task-num">3</td>
@@ -544,7 +550,7 @@
           <td><input type="text" placeholder="Responsable, notas..."></td>
           <td style="text-align:center;vertical-align:middle;">
             <button type="button" onclick="removeTarea(this)" title="Eliminar"
-              style="width:28px;height:28px;border:1px solid #fca5a5;background:#fff5f5;color:#dc2626;border-radius:6px;font-size:16px;cursor:pointer;line-height:1;">×</button>
+              style="width:28px;height:28px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:16px;cursor:pointer;line-height:1;">×</button>
           </td>
         </tr>
       </tbody>
@@ -577,19 +583,19 @@
     <div class="check-row">
       <input type="checkbox" id="chk0">
       <div class="resource-icon">📱</div>
-      <label class="check-label" for="chk0">Celular corporativo</label>
+      <label class="check-label" for="chk0">Celular corporativo.</label>
     </div>
 
     <div class="check-row">
       <input type="checkbox" id="chk1">
       <div class="resource-icon">📧</div>
-      <label class="check-label" for="chk1">Acceso a correo u otras herramientas compartidas</label>
+      <label class="check-label" for="chk1">Acceso a correo u otras herramientas compartidas.</label>
     </div>
 
     <div class="check-row">
       <input type="checkbox" id="chk2">
       <div class="resource-icon">📁</div>
-      <label class="check-label" for="chk2">Documentación relevante u otros insumos necesarios</label>
+      <label class="check-label" for="chk2">Documentación relevante u otros insumos necesarios.</label>
     </div>
   </div>
 
@@ -639,7 +645,7 @@
       <div class="info-bullet"></div>
       <input type="text" placeholder="Otro dato relevante..." style="flex:1;border:1px solid var(--line);border-radius:7px;padding:10px 14px;font-size:14px;font-family:inherit;color:var(--ink);background:#fdfdfc;outline:none;margin-left:0;">
       <button type="button" onclick="removeInfo(this)" title="Eliminar"
-        style="width:34px;height:38px;border:1px solid #fca5a5;background:#fff5f5;color:#dc2626;border-radius:7px;font-size:18px;cursor:pointer;flex-shrink:0;line-height:1;margin-left:8px;">×</button>
+        style="width:34px;height:38px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:7px;font-size:18px;cursor:pointer;flex-shrink:0;line-height:1;margin-left:8px;">×</button>
     `;
     list.appendChild(div);
     div.querySelector('input').focus();
@@ -668,7 +674,7 @@
       <td><input type="text" placeholder="Responsable, notas..." style="border:1px solid var(--line);border-radius:7px;padding:8px 10px;font-size:13px;font-family:inherit;width:100%;outline:none;"></td>
       <td style="text-align:center;vertical-align:middle;">
         <button type="button" onclick="removeTarea(this)" title="Eliminar"
-          style="width:28px;height:28px;border:1px solid #fca5a5;background:#fff5f5;color:#dc2626;border-radius:6px;font-size:16px;cursor:pointer;line-height:1;">×</button>
+          style="width:28px;height:28px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:6px;font-size:16px;cursor:pointer;line-height:1;">×</button>
       </td>
     `;
     tbody.appendChild(tr);
@@ -677,9 +683,8 @@
 
   function removeTarea(btn) {
     const tbody = document.getElementById('tareas-body');
-    if (tbody.querySelectorAll('tr').length <= 1) return;
     btn.closest('tr').remove();
-    // Renumber
+    // Renumber remaining
     tbody.querySelectorAll('tr').forEach((tr, i) => {
       tr.querySelector('.task-num').textContent = i + 1;
     });
@@ -693,7 +698,7 @@
     newRow.innerHTML = `
       <input type="text" placeholder="Nombre del colaborador encargado" style="flex:1;border:1px solid var(--line);border-radius:7px;padding:10px 14px;font-size:14px;font-family:inherit;color:var(--ink);background:#fdfdfc;outline:none;">
       <button type="button" onclick="removeColaborador(this)" title="Eliminar"
-        style="width:34px;height:38px;border:1px solid #fca5a5;background:#fff5f5;color:#dc2626;border-radius:7px;font-size:18px;cursor:pointer;flex-shrink:0;line-height:1;">×</button>
+        style="width:34px;height:38px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:7px;font-size:18px;cursor:pointer;flex-shrink:0;line-height:1;">×</button>
     `;
     list.appendChild(newRow);
     newRow.querySelector('input').focus();
