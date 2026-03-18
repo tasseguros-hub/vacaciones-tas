@@ -402,13 +402,41 @@
   @media print {
     body { background: white; padding: 20px; }
     .actions, .btn { display: none; }
-    .card { box-shadow: none; border: 1px solid #ccc; }
-    input, textarea, select {
+    button { display: none !important; }
+    button { display: none !important; }
+    .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+
+    /* Replace inputs/textareas/selects with their values as plain text */
+    input[type="text"], input[type="date"], textarea, select {
       border: none !important;
       border-bottom: 1px solid #aaa !important;
       border-radius: 0 !important;
       padding: 4px 2px !important;
       box-shadow: none !important;
+      height: auto !important;
+      min-height: unset !important;
+      overflow: visible !important;
+      white-space: pre-wrap !important;
+      word-break: break-word !important;
+      resize: none !important;
+    }
+
+    textarea {
+      height: auto !important;
+      min-height: unset !important;
+      overflow: visible !important;
+    }
+
+    /* Make table cells wrap properly */
+    .task-table td, .task-table th {
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    /* Ensure select shows selected value */
+    select {
+      -webkit-appearance: none;
+      appearance: none;
     }
   }
 
@@ -706,6 +734,26 @@
   function removeColaborador(btn) {
     btn.closest('.colab-row').remove();
   }
+
+  // Print: expand all inputs/textareas to show full content
+  window.addEventListener('beforeprint', function() {
+    document.querySelectorAll('input[type="text"], input[type="date"], textarea, select').forEach(el => {
+      const val = el.tagName === 'SELECT'
+        ? (el.options[el.selectedIndex]?.text || '')
+        : el.value;
+      const div = document.createElement('div');
+      div.className = '__print-val';
+      div.style.cssText = 'border-bottom:1px solid #aaa;padding:4px 2px;font-size:14px;font-family:inherit;color:#1a1a2e;min-height:20px;word-break:break-word;white-space:pre-wrap;width:100%;';
+      div.textContent = val || '';
+      el.style.display = 'none';
+      el.parentNode.insertBefore(div, el.nextSibling);
+    });
+  });
+
+  window.addEventListener('afterprint', function() {
+    document.querySelectorAll('.__print-val').forEach(el => el.remove());
+    document.querySelectorAll('input, textarea, select').forEach(el => el.style.display = '');
+  });
 
   function clearForm() {
     if (!confirm('¿Deseas borrar todos los datos del formulario?')) return;
